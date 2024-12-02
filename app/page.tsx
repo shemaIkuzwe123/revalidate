@@ -2,6 +2,7 @@ import { Users } from "../components/users"
 import { Orders } from "../components/orders"
 import { Button } from "@/components/ui/button"
 import { RevalidateAll } from "@/lib/actions"
+import { UserButton } from "@clerk/nextjs"
 
 export default function Dashboard() {
   return (
@@ -10,6 +11,9 @@ export default function Dashboard() {
       <form className="mb-8" action={RevalidateAll}>
         <Button type="submit" size="lg">Revalidate All</Button>
       </form>
+      <div>
+        <UserButton/>
+      </div>
       <div className="grid gap-8 md:grid-cols-2">
         <Users />
         <Orders />
