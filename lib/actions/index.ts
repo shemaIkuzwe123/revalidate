@@ -33,3 +33,5 @@ export async function revalidateUsers() {
 export async function revalidateProducts() {
   revalidateTag("products");
 }
+
+
