@@ -32,9 +32,9 @@ export async function Orders() {
           {products.map((prod) => (
             <TableRow key={prod.id}>
               <TableCell>{prod.id}</TableCell>
-              <TableCell>{prod.name}</TableCell>
+              <TableCell>{prod.productName}</TableCell>
               <TableCell>${prod.price}</TableCell>
-              <TableCell>{new Date(prod.createdAt).toDateString()}</TableCell>
+              <TableCell>{prod.createdAt ? new Date(prod.createdAt).toLocaleDateString() :""}</TableCell>
             </TableRow>
           ))}
         </TableBody>

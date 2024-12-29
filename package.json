@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:push": "pnpm drizzle-kit push"
+    "db:push": "pnpm drizzle-kit push",
+    "db:studio": "pnpm drizzle-kit studio"
   },
   "dependencies": {
     "@clerk/elements": "^0.19.8",
@@ -18,9 +19,10 @@
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.36.4",
     "lucide-react": "^0.462.0",
-    "next": "15.0.4-canary.30",
+    "next": "15.1.1-canary.23",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "svix": "^1.42.0",
