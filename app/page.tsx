@@ -5,6 +5,7 @@ import { addProduct, RevalidateAll } from "@/lib/actions";
 import {  UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
 import { Suspense } from "react";
+import TableSkeleton from "@/components/skelton/table";
 
 export default function Dashboard() {
   return (
@@ -28,10 +29,10 @@ export default function Dashboard() {
         <UserButton />
       </div>
       <div className="grid gap-8 md:grid-cols-2">
-        <Suspense fallback={<h3>Loading</h3>}>
+        <Suspense fallback={<TableSkeleton/>}>
           <Users />
         </Suspense>
-        <Suspense fallback={<h3>Loading..</h3>}>
+        <Suspense fallback={<TableSkeleton/>}>
           <Orders />
         </Suspense>
       </div>

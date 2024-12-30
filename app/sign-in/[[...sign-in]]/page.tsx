@@ -96,7 +96,7 @@ export default function page() {
                         <Label>Email address</Label>
                       </Clerk.Label>
                       <Clerk.Input type="email" required asChild>
-                        <Input placeholder="Enter email address"/>
+                        <Input placeholder="Enter email address" />
                       </Clerk.Input>
                       <Clerk.FieldError className="block text-sm text-destructive" />
                     </Clerk.Field>
@@ -308,7 +308,7 @@ export default function page() {
             </>
           )}
         </Clerk.Loading>
-      </SignIn.Root>
+      </SignIn.Root>  
     </div>
   );
 }

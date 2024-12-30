@@ -1,8 +1,8 @@
 "use server";
 
+import { eq } from "drizzle-orm";
 import { db } from "../db";
-import { productsTable } from "../db/schema";
-import {  User } from "../types";
+import { productsTable, User, usersTable } from "../db/schema";
 import {
   revalidatePath,
   revalidateTag,
@@ -11,17 +11,14 @@ import {
 export async function getUsers(): Promise<User[]> {
   "use cache";
   cacheTag("users");
-  const res = await fetch(
-    "https://674d82ee635bad45618ba52d.mockapi.io/api/users"
-  );
-  const users = await res.json();
-  return users as User[];
+  const users = await db.select().from(usersTable);
+  return users;
 }
 
 export async function getProducts() {
   "use cache";
   cacheTag("products");
-  const prods=await db.select().from(productsTable); 
+  const prods = await db.select().from(productsTable);
   return prods;
 }
 
@@ -45,4 +42,33 @@ export async function addProduct(formData: FormData) {
   });
 
   revalidateTag("products");
+}
+
+export async function createUser(user: User) {
+  await db.insert(usersTable).values({
+    id: user.id,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    imageUrl: user.imageUrl,
+    email: user.email,
+  });
+  revalidateTag("users");
+}
+
+export async function updateUser(user: User) {
+  await db
+    .update(usersTable)
+    .set({
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      imageUrl: user.imageUrl,
+    })
+    .where(eq(usersTable.id, user.id));
+  revalidateTag("users");
+}
+
+export async function deleteUser(id: string) {
+  await db.delete(usersTable).where(eq(usersTable.id, id));
+  revalidateTag("users");
 }
