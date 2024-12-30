@@ -1,27 +1,27 @@
-import { uuid, pgTable, varchar, timestamp, json } from "drizzle-orm/pg-core";
+import { uuid, pgTable, varchar, timestamp, integer} from "drizzle-orm/pg-core";
 
 const createdAt = timestamp("createdAt").defaultNow();
 const updatedAt = timestamp("updatedAt")
   .defaultNow()
   .$onUpdate(() => new Date());
 export const usersTable = pgTable("users", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  name: varchar("name", { length: 255 }).notNull(),
-  email: varchar("email", { length: 255 }).notNull().unique(),
+  id: varchar("id").primaryKey(),
+  first_name: varchar("first_name", { length: 100 }).notNull(),
+  last_name:varchar("last_name",{length:100}),
+  email: varchar("email", { length: 100 }).notNull().unique(),
+  imageUrl:varchar("imageUrl"),
   createdAt,
   updatedAt,
 });
 
-export const ordersTable = pgTable("orders", {
+export const productsTable = pgTable("products", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: uuid().references(() => usersTable.id, {
-    onUpdate: "cascade",
-    onDelete: "cascade",
-  }),
-  order: json("orders"),
+  productName:varchar("productName",{length:100}).notNull(),
+  price:integer().notNull(),
   createdAt,
   updatedAt,
 });
 
-export const User = typeof usersTable.$inferInsert;
-export const Orders = typeof ordersTable.$inferInsert;
+export type User = typeof usersTable.$inferInsert;
+export type Product =typeof productsTable.$inferInsert;
+
