@@ -190,7 +190,7 @@ export default function page() {
                     </CardHeader>
                     <CardContent className="grid gap-y-4">
                       <Clerk.Field name="code">
-                        <Clerk.Label className="sr-only">
+                        <Clerk.Label >
                           Email verification code
                         </Clerk.Label>
                         <div className="grid items-center justify-center gap-y-2">

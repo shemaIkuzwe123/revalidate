@@ -43,7 +43,7 @@ export default function SignUpPage() {
                       </Clerk.Input>
                       <Clerk.FieldError className=" block text-sm text-destructive" />
                     </Clerk.Field>
-                    {/* <SignUp.Captcha /> */}
+                    <SignUp.Captcha />
                     <div className="grid w-full">
                       <SignUp.Action submit asChild name="continue">
                         <Button disabled={isGlobalLoading}>
@@ -129,9 +129,6 @@ export default function SignUpPage() {
                     </Button>
                   </CardFooter>
                 </Card>
-              </SignUp.Step>
-              <SignUp.Step name="continue">
-                  <h4>COntinue</h4>
               </SignUp.Step>
               <SignUp.Step name="verifications">
                 <SignUp.Strategy name="email_code">
