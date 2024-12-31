@@ -4,7 +4,9 @@ import { Suspense } from "react";
 export default function Navbar() {
   return (
     <div className=" flex justify-between items-center">
-      <h1 className="text-3xl font-bold mb-4">Ppr</h1>
+      <Link href={"/"}>
+        <h1 className="text-3xl font-bold mb-4">Ppr</h1>
+      </Link>
       <Link href={"/"}>Products</Link>
       <Link href={"/users"}>Users</Link>
       <Suspense fallback={<span>Loading</span>}>
