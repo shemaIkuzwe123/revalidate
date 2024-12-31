@@ -4,7 +4,6 @@ import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { productsTable, User, usersTable } from "../db/schema";
 import {
-  revalidatePath,
   revalidateTag,
   unstable_cacheTag as cacheTag,
 } from "next/cache";
@@ -22,16 +21,6 @@ export async function getProducts() {
   return prods;
 }
 
-export async function RevalidateAll() {
-  revalidatePath("/", "layout");
-}
-
-export async function revalidateUsers() {
-  revalidateTag("users");
-}
-export async function revalidateProducts() {
-  revalidateTag("products");
-}
 
 export async function addProduct(formData: FormData) {
   const prodName = formData.get("name") as string;

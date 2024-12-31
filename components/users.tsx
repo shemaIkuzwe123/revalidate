@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -7,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getUsers, revalidateUsers } from "@/lib/actions";
+import { getUsers } from "@/lib/actions";
 
 export async function Users() {
   const users = await getUsers();
@@ -16,9 +15,6 @@ export async function Users() {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Users</h2>
-        <form action={revalidateUsers}>
-          <Button type="submit">Revalidate Users</Button>
-        </form>
       </div>
       <Table>
         <TableHeader>
@@ -32,7 +28,9 @@ export async function Users() {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
-              <TableCell>{user.id}</TableCell>
+              <TableCell>
+                {user.id.slice(0, 3)} ... {user.id.slice(-3)}
+              </TableCell>
               <TableCell>{user.first_name}</TableCell>
               <TableCell>{user.last_name}</TableCell>
               <TableCell>{user.email}</TableCell>
