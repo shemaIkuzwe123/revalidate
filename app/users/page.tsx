@@ -1,10 +1,13 @@
 import TableSkeleton from "@/components/skelton/table";
+import { Users } from "@/components/users";
 import { Suspense } from "react";
 
-export default function Users() {
+export default function page() {
   return (
-    <Suspense fallback={<TableSkeleton />}>
-      <Users />
-    </Suspense>
+    <div>
+      <Suspense fallback={<TableSkeleton />}>
+        <Users />
+      </Suspense>
+    </div>
   );
 }
