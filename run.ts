@@ -6,6 +6,6 @@ export async function addUser() {
   const users = await db.select().from(usersTable);
 
   console.log(products);
-  console.log(users);
+  console.log(users); 
 }
 addUser();
